@@ -17,8 +17,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      homeController.getRecipeData();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await homeController.getRecipeData();
     });
   }
 

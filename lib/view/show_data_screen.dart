@@ -261,7 +261,7 @@ class ShowDataScreen extends StatelessWidget {
                           return AlertDialog(
                             title: Center(
                               child: CommonText(
-                                text: 'Do you really want to delete the shake?',
+                                text: 'Do you really want to Logout?',
                                 fontWeight: FontWeight.w600,
                               ),
                             ),

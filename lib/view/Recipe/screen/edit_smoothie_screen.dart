@@ -12,6 +12,7 @@ import 'package:ps_smoothie_admin/const/text_field.dart';
 import 'package:ps_smoothie_admin/view/Recipe/controller/add_recipe_controller.dart';
 import 'package:ps_smoothie_admin/controller/home_controller.dart';
 import 'package:ps_smoothie_admin/view/Recipe/controller/edit_recipe_controller.dart';
+import 'package:ps_smoothie_admin/view/home_screen.dart';
 
 class SmoothieEditScreen extends StatefulWidget {
   const SmoothieEditScreen(
@@ -52,7 +53,7 @@ class _SmoothieEditScreenState extends State<SmoothieEditScreen> {
                       InkWell(
                         borderRadius: BorderRadius.circular(10 * size),
                         onTap: () {
-                          Get.back();
+                          Get.offAll(() => HomeScreen());
                         },
                         child: Container(
                           height: Responsive.isDesktop(context) ? 50 : 40,

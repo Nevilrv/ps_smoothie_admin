@@ -148,21 +148,15 @@ class _RecipeScreenState extends State<RecipeScreen> {
                                         ),
                                         onSelected: (value) async {
                                           if (value == 0) {
-                                            await Get.to(() =>
-                                                SmoothieEditScreen(
+                                            Get.to(() => SmoothieEditScreen(
                                                   smoothieData: controller
-                                                          .smoothieData[index]
-                                                      ['data'],
+                                                          .smoothieSearchedData[
+                                                      index]['data'],
                                                   documentId: controller
-                                                          .smoothieData[index]
-                                                      ['id'],
-                                                ))?.then((value) async {
-                                              log('----dddd-----');
-                                              await controller.getRecipeData();
-                                            });
+                                                          .smoothieSearchedData[
+                                                      index]['id'],
+                                                ));
                                           } else {
-                                            log('----------deew');
-
                                             showDialog(
                                                 context: context,
                                                 builder: (context) {
@@ -197,7 +191,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
                                                                       .collection(
                                                                           'smoothieCollection')
                                                                       .doc(controller
-                                                                              .smoothieData[index]
+                                                                              .smoothieSearchedData[index]
                                                                           [
                                                                           'id'])
                                                                       .delete();
