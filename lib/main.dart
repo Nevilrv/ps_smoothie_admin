@@ -17,6 +17,7 @@ void main() async {
         appId: "1:179708971979:web:b350fc6292b86cf83fc44e",
         measurementId: "G-SS78VXJ0X8"),
   );
+
   runApp(MyApp());
 }
 
