@@ -359,27 +359,27 @@ class ShowDataScreen extends StatelessWidget {
                   : 15,
         ),
         Row(
-          mainAxisSize: MainAxisSize.min,
+          // mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text(
-              "Static Data",
-              style: TextStyle(
-                  fontSize: 20,
-                  color: AppColor.mainColor,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(width: 10),
-            Switch(
-              value: controller.isStatic,
-              onChanged: (value) {
-                controller.updateStaticData(value);
-              },
-              activeColor: AppColor.ligthPurpleColor,
-              activeTrackColor: AppColor.mainColor,
-            ),
-            Spacer(),
+            // Text(
+            //   "Static Data",
+            //   style: TextStyle(
+            //       fontSize: 20,
+            //       color: AppColor.mainColor,
+            //       fontWeight: FontWeight.bold),
+            // ),
+            // SizedBox(width: 10),
+            // Switch(
+            //   value: controller.isStatic,
+            //   onChanged: (value) {
+            //     controller.updateStaticData(value);
+            //   },
+            //   activeColor: AppColor.ligthPurpleColor,
+            //   activeTrackColor: AppColor.mainColor,
+            // ),
+            // Spacer(),
             InkWell(
               borderRadius: BorderRadius.circular(10 * size),
               onTap: () {
