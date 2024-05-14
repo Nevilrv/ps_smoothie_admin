@@ -3,8 +3,11 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ps_smoothie_admin/const/collection.dart';
 import 'package:ps_smoothie_admin/const/color.dart';
 import 'package:ps_smoothie_admin/const/common_snackbar.dart';
+import 'package:ps_smoothie_admin/get_storage/get_storage_service.dart';
+import 'package:ps_smoothie_admin/view/home_screen.dart';
 
 FirebaseAuth kFirebaseAuth = FirebaseAuth.instance;
 
@@ -50,10 +53,12 @@ class AuthController extends GetxController {
       required BuildContext context}) async {
     showProgressDialog();
     try {
-      await kFirebaseAuth.signInWithEmailAndPassword(
+      var result = await kFirebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
-      update();
 
+      log('result ---------->>>>>>>> ${result}');
+
+      update();
       return true;
     } on FirebaseAuthException catch (e) {
       hideProgressDialog();
@@ -97,8 +102,40 @@ class AuthController extends GetxController {
             context: context, title: "Something went to wrong.");
       }
       update();
-
       return false;
     }
+  }
+
+  getCurrentUserDetails(context) async {
+    var data = await adminCollection.get();
+
+    data.docs.forEach((element) {
+      if (element['email'] != emailController.text.trim()) {
+        CommonSnackBar.showSnackBar(
+            context: context, title: "The email address is not valid.");
+      } else if (element['password'] != passwordController.text.trim()) {
+        CommonSnackBar.showSnackBar(
+            context: context,
+            title: "The password is invalid for the given email.");
+      } else if (element['email'] == emailController.text.trim() &&
+          element['password'] == passwordController.text.trim()) {
+        try {
+          CommonSnackBar.showSnackBar(
+              context: context, title: "Admin Login Successfully!!!");
+          Get.offAll(() => HomeScreen());
+          PreferenceManager.setLogin(true);
+          PreferenceManager.setAdminPassword(passwordController.text.trim());
+          PreferenceManager.setAdminEmail(emailController.text.trim());
+        } catch (e) {
+          print('----$e');
+          hideProgressDialog();
+        }
+      } else {
+        CommonSnackBar.showSnackBar(
+            context: context, title: "Admin Not Found!!!");
+      }
+    });
+
+    update();
   }
 }

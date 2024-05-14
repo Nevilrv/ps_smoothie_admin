@@ -236,6 +236,7 @@ class AddRecipeController extends GetxController {
             'elergic': elergic,
             'image': imageUrl,
             'size': sizeAdded,
+            'isActive': true,
             'time': DateTime.now()
           });
           await FirebaseFirestore.instance
@@ -324,6 +325,7 @@ class AddRecipeController extends GetxController {
             'elergic': elergic,
             'image': imageUrl,
             'size': sizeData,
+            'isActive': true,
             'time': DateTime.now()
           });
           await FirebaseFirestore.instance

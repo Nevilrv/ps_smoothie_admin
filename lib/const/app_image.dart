@@ -1,6 +1,7 @@
 class AppImage {
   static String commonPath = 'assets/images';
   static String logoImage = '$commonPath/logo.png';
+  static String filter = '$commonPath/filter.png';
   static String recipeImage = '$commonPath/recipe.png';
   static String uploadImage = '$commonPath/upload.png';
   static String userImage = '$commonPath/user.png';

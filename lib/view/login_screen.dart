@@ -114,40 +114,7 @@ class MainScreen extends StatelessWidget {
                           buttonColor: AppColor.mainColor,
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              // bool status = await controller.logInMethod(
-                              //     email: controller.emailController.text.trim(),
-                              //     password:
-                              //         controller.passwordController.text.trim(),
-                              //     context: context);
-                              // if (status == true) {
-                              //   Get.offAll(() => HomeScreen());
-                              //   PreferenceManager.setLogin(true);
-                              // }
-
-                              if (controller.emailController.text !=
-                                  'admin@gmail.com') {
-                                CommonSnackBar.showSnackBar(
-                                    context: context,
-                                    title: "The email address is not valid.");
-                              } else if (controller.passwordController.text !=
-                                  'Admin@123') {
-                                CommonSnackBar.showSnackBar(
-                                    context: context,
-                                    title:
-                                        "The password is invalid for the given email.");
-                              } else if (controller.emailController.text ==
-                                      'admin@gmail.com' &&
-                                  controller.passwordController.text ==
-                                      'Admin@123') {
-                                Get.offAll(() => HomeScreen());
-                                PreferenceManager.setLogin(true);
-                              } else{
-                                CommonSnackBar.showSnackBar(
-                                    context: context,
-                                    title:
-                                    "Something Went Wrong");
-
-                              }
+                              controller.getCurrentUserDetails(context);
                             }
                           },
                           child: CommonText(

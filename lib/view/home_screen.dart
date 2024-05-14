@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return Scaffold(
           body: Padding(
             padding: EdgeInsets.only(
-                top: 90 * size, right: 105 * size, left: 105 * size),
+                top: 0 * size, right: 105 * size, left: 105 * size),
             child: controller.addRecipe == true
                 ? AddRecipeScreen(homeController: controller)
                 : ShowDataScreen(controller: controller),
